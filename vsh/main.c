@@ -1,15 +1,8 @@
-#include <stdlib.h>
-#include <stdio.h>
-
-char * prompt() {
-	char *input = malloc(25);
-	puts("(vsh) => ");
-	scanf(input);
-	puts(input);
-	return input;
-}
-
-int main() {
-	prompt();
-	return 0;
-}
+/*
+* 2024 vx-clutch
+* MIT LICENSE
+*
+* TODO:
+*  - Prompt: (vsh) =>
+*  - Commands: ls, pwd, cd
+*/

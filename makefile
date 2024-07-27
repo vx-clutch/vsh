@@ -1,15 +1,17 @@
 P=vsh/main.c
+O=bin/
 
 all: build
 
 build:
-	@gcc -o vsh-release $P -Wall
+	@gcc -o $Ovsh-release $P -Wall
 
 debug:
-	@gcc -o vsh-debug $P -g -Wall
+	@gcc -o $Ovsh-debug $P -g -Wall
 
 clean:
-	@rm vsh-*
+	@-rm vsh-*
+	@-rm bin/vsh-*
 
 run:
 	@gcc -o vsh-release $P
