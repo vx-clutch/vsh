@@ -1,19 +1,11 @@
-P=vsh/main.c
-O=bin/
-
 all: build
 
 build:
-	@gcc -o $Ovsh-release $P -Wall
+	@go build -o ./go-out/bin/ ./...
 
 debug:
-	@gcc -o $Ovsh-debug $P -g -Wall
+	@go build -gcflags="all=-N -l" -o ./go-out/bin/ ./...
 
 clean:
-	@-rm vsh-*
-	@-rm bin/vsh-*
-
-run:
-	@gcc -o vsh-release $P
-	@-./vsh-release
-	@rm vsh-release
+	@-rm ./go-out/bin/*
+	@go clean
