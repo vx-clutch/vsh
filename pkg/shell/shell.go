@@ -2,6 +2,7 @@ package shell
 
 import (
 	"fmt"
+	"os/exec"
 	"strings"
 )
 
@@ -10,11 +11,21 @@ type operation struct {
 	args    []string
 }
 
+func (o operation) Exec() {
+	cmd := exec.Command(o.command, o.args...)
+	err := cmd.Run()
+	if err != nil {
+		fmt.Printf("vsh: %v failed: %v", o.command, err)
+		return
+	}
+}
+
 func Start() {
 	for {
-		comand := prompt()
-		switch comand.command {
+		command := prompt()
+		switch strings.TrimSpace(command.command) {
 		default:
+			// TODO: Detected valid commands
 			fmt.Print("vsh: Unknown command")
 		case "", " ":
 			continue
