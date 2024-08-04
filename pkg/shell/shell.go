@@ -11,13 +11,13 @@ type operation struct {
 	args    []string
 }
 
-func (o operation) Exec() {
+func (o operation) Exec() error {
 	cmd := exec.Command(o.command, o.args...)
 	err := cmd.Run()
 	if err != nil {
-		fmt.Printf("vsh: %v failed: %v", o.command, err)
-		return
+		return err
 	}
+	return nil
 }
 
 func Start() {
